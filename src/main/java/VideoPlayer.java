@@ -39,6 +39,7 @@ public class VideoPlayer implements Player{
         this.volume -= 5;
     }
 
+    @Override
     public int getVolume(){
         return this.volume;
     }
