@@ -43,7 +43,7 @@ public class VideoPlayer implements Player{
         return this.volume;
     }
 
-    public void fastFoward(){
+    public void fastForward(){
         this.currentTime += 5;
     }
 

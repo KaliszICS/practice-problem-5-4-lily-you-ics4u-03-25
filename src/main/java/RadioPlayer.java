@@ -3,6 +3,7 @@ public class RadioPlayer implements Player{
     private double[] stationList;
     private int volume;
     private double station;
+    int index = 0;
 
     public RadioPlayer(double[] list){
         this.stationList = list;
@@ -11,11 +12,14 @@ public class RadioPlayer implements Player{
         this.station = 0;
     }
 
+
     @Override
     public void start(){
         if(!onOff){
             this.onOff = true;
             this.station = stationList[0];
+            index = 0;
+
         }
     }
 
@@ -28,7 +32,6 @@ public class RadioPlayer implements Player{
 
     }
 
-    @Override
     public boolean getOnOff(){
         return this.onOff;
     }
@@ -48,23 +51,15 @@ public class RadioPlayer implements Player{
         return this.volume;
     }
 
-    int index = 0;
+    
     public void next(){
-        for(int i = stationList.length - 1; i > 0; i++){
-            if(stationList[i] == (this.station)){
-                index = i;
-            }
-        }
-        this.station = stationList[index+1];
+        index++;
+        this.station = stationList[index];
     }
 
     public void previous(){
-        for(int i = stationList.length - 1; i > 0; i++){
-            if(stationList[i] == (this.station)){
-                index = i;
-            }
-        }
-        this.station = stationList[index-1];
+        index--;
+        this.station = stationList[index];
     }
 
     public double getStation(){

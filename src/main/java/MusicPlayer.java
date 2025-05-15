@@ -4,6 +4,8 @@ public class MusicPlayer implements Player{
     private String currentSong;
     private int volume;
 
+    int index = 0;
+
     public MusicPlayer(String[] list){
         this.musicList = list;
         this.volume = 0;
@@ -16,6 +18,7 @@ public class MusicPlayer implements Player{
         if(!this.onOff){
             this.onOff = true;
             this.currentSong = musicList[0];
+            index = 0;
         }
     }
 
@@ -46,24 +49,14 @@ public class MusicPlayer implements Player{
         return this.volume;
     }
 
-    int index = 0;
-    
     public void next(){
-        for(int i = musicList.length - 1; i > 0; i++){
-            if(musicList[i].equals(this.currentSong)){
-                index = i;
-            }
-        }
-        this.currentSong = musicList[index+1];
+        index++;
+        this.currentSong = musicList[index];
     }
 
     public void previous(){
-        for(int i = musicList.length - 1; i > 0; i++){
-            if(musicList[i].equals(this.currentSong)){
-                index = i;
-            }
-        }
-        this.currentSong = musicList[index-1];
+        index--;
+        this.currentSong = musicList[index];
     }
 
     public String getCurrentSong(){
